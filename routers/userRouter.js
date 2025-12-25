@@ -50,10 +50,9 @@ userRouter.post('/tickets/buy', authentication, async (req, res) => {
                     await writeFile(receiptsFile, receipts)
                     await writeFile(eventsFile, events)
                     return res.status(200).send(`${quantity} Tickets for: '${eventName}' purchased successfully.`)
-                } else {
-                    return res.status(400).send('There is no such event or there are no tickets available for purchase.')
                 }
             }
+            return res.status(400).send('There is no such event or there are no tickets available for purchase.')
         }
     } 
     return res.status(422).send('Error entering data.')
