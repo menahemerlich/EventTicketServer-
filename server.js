@@ -1,4 +1,5 @@
 import express from 'express'
+import { fileCheck } from './middleware/fileCheck.js'
 import { userRouter } from './routers/userRouter.js';
 import { eventRouter } from './routers/eventRouter.js';
 
@@ -6,6 +7,7 @@ const app = express()
 const PORT = process.env.PORT || 3030;
 
 app.use(express.json())
+app.use(fileCheck)
 app.use('/users', userRouter)
 app.use('/', eventRouter)
 
